@@ -1,0 +1,8 @@
+.lsp/.cache
+.clj-kondo/.cache
+.nrepl-port
+node_modules
+bundle-visualization.html
+pub/js
+pub/test
+pub/dist

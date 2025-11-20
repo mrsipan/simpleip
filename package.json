@@ -1,0 +1,29 @@
+{
+  "name": "simpleip",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vite.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrsipan/simpleip.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mrsipan/simpleip/issues"
+  },
+  "homepage": "https://github.com/mrsipan/simpleip#readme",
+  "dependencies": {
+    "eucalypt": "^0.0.15",
+    "squint-cljs": "^0.9.181",
+    "vite": "^7.2.4"
+  }
+}

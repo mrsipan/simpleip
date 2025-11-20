@@ -1,0 +1,4 @@
+{
+ :paths ["src"]
+ :output-dir "pub/js"
+ }
