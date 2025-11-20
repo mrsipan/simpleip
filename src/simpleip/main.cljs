@@ -1,26 +1,44 @@
 (ns simpleip.main
   (:require [eucalypt :as eu]
-            ["ip-subnet-calculator" :as ip-calc]
+            ["ip-subnet-calculator" :as Ip-calc]
             ))
 
-; (println (fs/existsSync (fileURLToPath js/import.meta.url)))
-
-(defn foo [{:keys [a b c]}]
-  (+ a b c))
-
-(println (foo {:a 1 :b 2 :c 3}))
-
-(defonce statuz (eu/atom {}))
+(defonce App-statuz (eu/atom
+                      {:div-content "Nada"
+                       :color "blue"}))
 
 
-(println (.isIp ip-calc "127.0.0.1"))
+(defn Check-ip-addr-validity [ev]
+  (let [content-curr (-> ev .-target .-textContent)]
+    (println content-curr)
+    (println (.isIp Ip-calc content-curr))
 
-(defn component:main [statuz]
-  [:<>
-    [:p "Hello world!"]
-    [:p "Hello world2!"]
-    [:pre (pr-str @statuz)]])
+    (if (.isIp Ip-calc content-curr)
+      (swap! App-statuz assoc :color "green")
+      (swap! App-statuz assoc :color "sienna")
+      )
+    (swap! App-statuz assoc :div-content content-curr)
+
+    )
+  ; (.isIp Ip-calc ip-addr)
+  )
+
+
+(defn component:main [App-statuz]
+  [:section
+ {:class "section"}
+ [:div
+  {:class "container has-text-centered"}
+  [:h1 {:class "title"} "Enter IP Address"]
+  [:div
+   {:class "box editable-box has-text-centered",
+    :contenteditable "true",
+    :on-input Check-ip-addr-validity
+    :style {
+            :color (:color @App-statuz)}
+    :id "colorBox"}]]]
+  )
 
 (eu/render
-  [component:main statuz]
+  [component:main App-statuz]
   (js/document.getElementById "app"))

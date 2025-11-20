@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/mrsipan/simpleip#readme",
   "dependencies": {
+    "bulma": "^1.0.4",
     "eucalypt": "^0.0.15",
     "ip-subnet-calculator": "^2.0.1",
     "squint-cljs": "^0.9.181",

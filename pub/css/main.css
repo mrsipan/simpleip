@@ -1,0 +1,13 @@
+.editable-box {
+  border: 1px solid #ccc;
+  font-size: 43px;
+  font-family: monospace;
+  padding: 1rem;
+  min-height: 100px;
+  background-color: #fff;
+  overflow-wrap: break-word;
+}
+.editable-box span {
+  white-space: pre;
+}
+
