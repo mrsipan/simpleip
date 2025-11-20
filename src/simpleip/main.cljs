@@ -1,5 +1,7 @@
 (ns simpleip.main
-  (:require [eucalypt :as eu]))
+  (:require [eucalypt :as eu]
+            ["ip-subnet-calculator" :as ip-calc]
+            ))
 
 ; (println (fs/existsSync (fileURLToPath js/import.meta.url)))
 
@@ -9,6 +11,9 @@
 (println (foo {:a 1 :b 2 :c 3}))
 
 (defonce statuz (eu/atom {}))
+
+
+(println (.isIp ip-calc "127.0.0.1"))
 
 (defn component:main [statuz]
   [:<>

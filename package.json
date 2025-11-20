@@ -23,6 +23,7 @@
   "homepage": "https://github.com/mrsipan/simpleip#readme",
   "dependencies": {
     "eucalypt": "^0.0.15",
+    "ip-subnet-calculator": "^2.0.1",
     "squint-cljs": "^0.9.181",
     "vite": "^7.2.4"
   }
