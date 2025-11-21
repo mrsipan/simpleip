@@ -4,7 +4,7 @@
             ["ip-subnet-calculator" :as Ip-calc]))
 
 
-(def placeholder-content "Enter IP her")
+(def placeholder-content "Enter IP here")
 
 (defonce DB-App
   (Ra/atom {:div-content placeholder-content, :color "grey"}))
