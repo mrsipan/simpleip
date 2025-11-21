@@ -1,33 +1,59 @@
 (ns simpleip.main
   (:require [eucalypt :as Ra]
+            [squint.string :as squint.string]
             ["ip-subnet-calculator" :as Ip-calc]))
 
-(defonce App-statuz (Ra/atom {:div-content "Enter IP here", :color "grey"}))
+(defonce DB-App
+  (Ra/atom {:div-content "", :color "grey"}))
+
+
+;; Utility function to set the caret position at the end of a contenteditable element
+(defn Set-caret-to-end! [el]
+  (when el
+    (let [range (document.createRange)
+          sel (window.getSelection)]
+      ;; Select all content in the element
+      (.selectNodeContents range el)
+      ;; Collapse the range to its end point (placing the cursor there)
+      (.collapse range false)
+      ;; Remove any existing selections
+      (.removeAllRanges sel)
+      ;; Add the new range
+      (.addRange sel range)
+      ;; Focus the element
+      (.focus el))))
 
 
 (defn Check-ip-addr-validity
   [ev]
   (let [content-curr (-> ev
                          .-target
-                         .-textContent)]
+                         .-textContent)
+       el-target (.-target ev)
+        ]
     (println content-curr)
     (println (.isIp Ip-calc content-curr))
     (if (.isIp Ip-calc content-curr)
-      (swap! App-statuz assoc :color "green")
-      (swap! App-statuz assoc :color "sienna"))
-    (swap! App-statuz assoc :div-content content-curr)))
+      (swap! DB-App assoc :color "has-text-primary")
+      (swap! DB-App assoc :color "sienna"))
+    (swap! DB-App assoc :div-content (-> ev .-target .-textContent))
+    (Set-caret-to-end! el-target)
+    ))
 
 
-(defn component:main
-  [App-statuz]
+(defn Component:main
+  [DB-App]
   [:section {:class "section"}
    [:div {:class "container has-text-centered"}
     [:h1 {:class "title"} "Enter IP Address"]
     [:div
-     {:class "box editable-box has-text-centered",
+     {:class (squint.string/join " "
+                                 ["box" "editable-box"
+                                  "has-text-centered" (:color  @DB-App)]),
       :contenteditable "true",
       :on-input Check-ip-addr-validity,
-      :style {:color (:color @App-statuz)},
-      :id "colorBox"} (:div-content @App-statuz)]]])
+      :style {:color (:color @DB-App)},
+      :id "colorBox"} (:div-content @DB-App)]]])
 
-(Ra/render [component:main App-statuz] (js/document.getElementById "app"))
+(Ra/render [Component:main DB-App]
+           (js/document.getElementById "app"))
