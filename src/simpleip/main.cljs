@@ -15,20 +15,25 @@
 (defn Set-caret-to-end!
   [el]
   (when el
-    (let [range (document.createRange)
+    (let [-range (document.createRange)
           sel (window.getSelection)]
       ;; Select all content in the element
-      (.selectNodeContents range el)
+      (.selectNodeContents -range el)
       ;; Collapse the range to its end point (placing the cursor
       ;; there)
-      (.collapse range false)
+      (.collapse -range false)
       ;; Remove any existing selections
       (.removeAllRanges sel)
       ;; Add the new range
-      (.addRange sel range)
+      (.addRange sel -range)
       ;; Focus the element
       (.focus el))))
 
+(defn Handle-key-down
+  [ev]
+  (when (= (.-key ev) "Escape")
+    (.preventDefault ev)
+    (swap! DB-App assoc :div-content "")))
 
 (defn Check-ip-addr-validity
   [ev]
@@ -66,6 +71,7 @@
       :contenteditable "true",
       :on-input Check-ip-addr-validity,
       :on-focus Handle-focusing,
+      :on-key-down Handle-key-down,
       :style {:color (:color @DB-App)},
       :id "colorBox"} (:div-content @DB-App)]]])
 
