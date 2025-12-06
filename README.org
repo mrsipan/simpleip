@@ -1,0 +1,40 @@
+* Simple IP calc
+
+** Squint
+
+#+begin_src sh
+npm install
+npx squint watch &
+npx squint repl
+
+# nrepl server
+npx squint nrepl-server :port 3242
+#+end_src
+
+
+** Vite
+
+#+begin_src sh
+npx vite pub
+#+end_src
+
+** Vite project
+
+This is an example:
+
+#+begin_src sh
+npx create-vite@latest simpleip --template vanilla
+npm install
+
+# start vite dev server
+npm run dev
+
+#+end_src
+
+#+begin_quote
+- Install x packages there, then use import x from 'x' in
+  your main.js code and Vite will automatically bundle them into your
+  project.
+
+- Enable GitHub Pages via GitHub Actions.
+#+end_quote

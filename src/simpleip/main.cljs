@@ -62,7 +62,7 @@
   [DB-App]
   [:section {:class "section"}
    [:div {:class "container has-text-centered"}
-    [:h1 {:class "title"} "Enter IP Address"]
+    ; [:h1 {:class "title"} "Enter IP Address"]
     [:div
      {:class (squint.string/join " "
                                  ["box" "editable-box"
