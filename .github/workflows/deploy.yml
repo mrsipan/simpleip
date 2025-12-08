@@ -22,12 +22,12 @@ jobs:
             base: "/${{ github.event.repository.name }}/"
           }' > vite.config.js
       - name: Build project
-        run: npx squint compile -output-dir js/
+        run: npx squint compile -output-dir build/js/
         # run: npm run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: js/
+          path: build/
   deploy:
     needs: build
     permissions:
