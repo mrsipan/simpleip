@@ -27,7 +27,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist/
+          path: dist/simpleip/js/simpleip
   deploy:
     needs: build
     permissions:
