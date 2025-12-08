@@ -23,7 +23,8 @@ jobs:
           }' > vite.config.js
       - name: Build project
         run: npx squint compile --output-dir dist/js
-        # run: npm run build
+      - name: Bundle
+        run: npx esbuild js/simpleip/main.mjs --bundle --minify --platform=browser --outfile=js/simpleip/main.min.mjs --format=esm
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
