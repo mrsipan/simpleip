@@ -22,9 +22,9 @@ jobs:
       #       base: "/${{ github.event.repository.name }}/"
       #     }' > vite.config.js
       - name: Build project
-        run: npx squint compile --output-dir dist/js
+        run: npx squint compile --output-dir dist-1/js
       - name: Bundle
-        run: npx esbuild dist/js/simpleip/main.mjs --bundle --minify --platform=browser --outfile=dist/js/simpleip/main.mjs --format=esm
+        run: npx esbuild dist-1/js/simpleip/main.mjs --bundle --minify --platform=browser --outfile=dist/js/simpleip/main.min.mjs --format=esm
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
