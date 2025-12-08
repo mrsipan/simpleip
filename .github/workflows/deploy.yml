@@ -27,7 +27,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: js
+          path: js/
   deploy:
     needs: build
     permissions:
