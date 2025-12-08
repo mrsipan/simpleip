@@ -24,7 +24,7 @@ jobs:
       - name: Build project
         run: npx squint compile --output-dir dist/js
       - name: Bundle
-        run: npx esbuild js/simpleip/main.mjs --bundle --minify --platform=browser --outfile=js/simpleip/main.min.mjs --format=esm
+        run: npx esbuild dist/js/simpleip/main.mjs --bundle --minify --platform=browser --outfile=dist/js/simpleip/main.min.mjs --format=esm
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
