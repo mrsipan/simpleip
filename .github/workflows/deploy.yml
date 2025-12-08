@@ -16,11 +16,11 @@ jobs:
         uses: actions/setup-node@v3
       - name: Install dependencies
         run: npm install
-      # - name: Configure vite
-      #   run: |
-      #     echo 'export default {
-      #       base: "/${{ github.event.repository.name }}/"
-      #     }' > vite.config.js
+      - name: Configure vite
+        run: |
+          echo 'export default {
+            base: "/${{ github.event.repository.name }}/"
+          }' > vite.config.js
       - name: Build project
         run: npx squint compile --output-dir dist-1/js
       - name: Bundle
